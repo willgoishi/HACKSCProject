@@ -47,29 +47,45 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-        
+
+  final formkey = new GlobalKey<FormState>();      
+
+  String _enail;
+  String _password;
+  
+  void validateandsave(){
+    final form = formkey.currentState;
+    if(form.validate()){
+      print ("Form Valid");
+    }
+    else{
+      print ("Form Invalid");
+    }
+  }
 
       @override
       Widget build(BuildContext context) {
 
 
-        final emailField = TextField(
+        final emailField = new TextFormField(
           obscureText: false,
           autofocus: true,
+          validator: (val) => val.isEmpty ? 'Empty Field' : null,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               hintText: "Email",
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)))
         );
 
-        final passwordField = TextField(
+        final passwordField = TextFormField(
           obscureText: true,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               hintText: "Password",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          validator: (value) => value.isEmpty ? 'Empty Field' : null
         );
 
         final loginButton = Material(
@@ -79,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {},
+            onPressed: validateandsave,
             child: Text("Login",
                 textAlign: TextAlign.center,
                ),
@@ -105,6 +121,8 @@ class _LoginPageState extends State<LoginPage> {
             child:Center(
             child: Container(
               color: Colors.white,
+              child: Form(
+                key: formkey,
               child: Padding(
                 padding: const EdgeInsets.all(36.0),
                 child: Column(
@@ -142,6 +160,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ) 
+          )
           )
         );
       }
