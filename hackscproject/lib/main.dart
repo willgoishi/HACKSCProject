@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'usercreationform.dart';
 
 void main() => runApp(MyApp());
 
@@ -46,17 +47,42 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
- @override
+ /*       final myController = TextEditingController();
+
+         void initState() {
+         super.initState();
+
+    // Start listening to changes.
+    myController.addListener(_printLatestValue);
+  
+  _printLatestValue(){
+    print('secondtext: ${myController.text}')
+  }
+
+        @override
+        void dispose()
+        {
+          myController.dispose();
+          super.dispose();
+        }
+*/
+      @override
       Widget build(BuildContext context) {
 
+
+
+
         final emailField = TextField(
+  //        controller: myController,
           obscureText: false,
+          autofocus: true,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               hintText: "Email",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
+
         final passwordField = TextField(
           obscureText: true,
           decoration: InputDecoration(
@@ -82,7 +108,12 @@ class _LoginPageState extends State<LoginPage> {
 
         final createNewAccount = FlatButton(
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserCreationForm()),
+              );
+            },
             child: Text("Create A New Account",
                 textAlign: TextAlign.center,
           ),
