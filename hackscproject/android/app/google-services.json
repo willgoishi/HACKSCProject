@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "353138321273",
+    "firebase_url": "https://hacksc-450f6.firebaseio.com",
+    "project_id": "hacksc-450f6",
+    "storage_bucket": "hacksc-450f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353138321273:android:2074fa9579fbd336d871a8",
+        "android_client_info": {
+          "package_name": "com.HACKSC.mentalHealth1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353138321273-i4g9g69p2vhonqv99qdns0gdl2hrjg1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0HQlQAZAVYQdf5NXeGiQ5a_BmjVdzgYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353138321273-i4g9g69p2vhonqv99qdns0gdl2hrjg1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
