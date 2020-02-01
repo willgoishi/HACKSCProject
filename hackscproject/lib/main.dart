@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'usercreationform.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(MyApp());
@@ -46,32 +47,46 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-//Example Code -> delete when actually gets implemented
-void CreateUser() async {
-    final databaseReference = Firestore.instance;
-    await databaseReference.collection("users")
-    .add({'First Name' : 'R', 'Last Name' : 'y'});
-}
-
 class _LoginPageState extends State<LoginPage> {
- @override
+
+  final formkey = new GlobalKey<FormState>();      
+
+  String _enail;
+  String _password;
+  
+  void validateandsave(){
+    final form = formkey.currentState;
+    if(form.validate()){
+      print ("Form Valid");
+    }
+    else{
+      print ("Form Invalid");
+    }
+  }
+
+      @override
       Widget build(BuildContext context) {
 
-        final emailField = TextField(
+
+        final emailField = new TextFormField(
           obscureText: false,
+          autofocus: true,
+          validator: (val) => val.isEmpty ? 'Empty Field' : null,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               hintText: "Email",
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)))
         );
-        final passwordField = TextField(
+
+        final passwordField = TextFormField(
           obscureText: true,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               hintText: "Password",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          validator: (value) => value.isEmpty ? 'Empty Field' : null
         );
 
         final loginButton = Material(
@@ -81,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () { CreateUser(); },
+            onPressed: validateandsave,
             child: Text("Login",
                 textAlign: TextAlign.center,
                ),
@@ -90,7 +105,12 @@ class _LoginPageState extends State<LoginPage> {
 
         final createNewAccount = FlatButton(
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => (UserCreationForm())),
+              );
+            },
             child: Text("Create A New Account",
                 textAlign: TextAlign.center,
           ),
@@ -102,6 +122,8 @@ class _LoginPageState extends State<LoginPage> {
             child:Center(
             child: Container(
               color: Colors.white,
+              child: Form(
+                key: formkey,
               child: Padding(
                 padding: const EdgeInsets.all(36.0),
                 child: Column(
@@ -139,6 +161,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ) 
+          )
           )
         );
       }
