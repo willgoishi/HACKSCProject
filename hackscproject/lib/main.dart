@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,6 +44,13 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+//Example Code -> delete when actually gets implemented
+void CreateUser() async {
+    final databaseReference = Firestore.instance;
+    await databaseReference.collection("users")
+    .add({'First Name' : 'R', 'Last Name' : 'y'});
+}
+
 class _MyHomePageState extends State<MyHomePage> {
  @override
       Widget build(BuildContext context) {
@@ -71,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {},
+            onPressed: () { CreateUser(); },
             child: Text("Login",
                 textAlign: TextAlign.center,
                ),
