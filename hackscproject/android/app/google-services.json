@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:353138321273:android:2074fa9579fbd336d871a8",
+        "mobilesdk_app_id": "1:353138321273:android:090b7f2c8ede1d54d871a8",
         "android_client_info": {
-          "package_name": "com.HACKSC.mentalHealth1"
+          "package_name": "com.example.hackscproject"
         }
       },
       "oauth_client": [
