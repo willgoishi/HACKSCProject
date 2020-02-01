@@ -78,8 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         );
 
+        
+
         return Scaffold(
-          body: Center(
+          body: SingleChildScrollView(
+            child:Center(
             child: Container(
               color: Colors.white,
               child: Padding(
@@ -110,7 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-          ),
+          ) 
+          )
         );
       }
     }
