@@ -47,33 +47,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
- /*       final myController = TextEditingController();
+        
 
-         void initState() {
-         super.initState();
-
-    // Start listening to changes.
-    myController.addListener(_printLatestValue);
-  
-  _printLatestValue(){
-    print('secondtext: ${myController.text}')
-  }
-
-        @override
-        void dispose()
-        {
-          myController.dispose();
-          super.dispose();
-        }
-*/
       @override
       Widget build(BuildContext context) {
 
 
-
-
         final emailField = TextField(
-  //        controller: myController,
           obscureText: false,
           autofocus: true,
           decoration: InputDecoration(
@@ -111,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => UserCreationForm()),
+                MaterialPageRoute(builder: (context) => (UserCreationForm())),
               );
             },
             child: Text("Create A New Account",
