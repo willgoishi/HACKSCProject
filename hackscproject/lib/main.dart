@@ -19,15 +19,17 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Landing Page'),
+      home: LoginPage(title: 'Landing Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+
+
+class LoginPage extends StatefulWidget {
+  LoginPage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -41,7 +43,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
 //Example Code -> delete when actually gets implemented
@@ -51,7 +53,7 @@ void CreateUser() async {
     .add({'First Name' : 'R', 'Last Name' : 'y'});
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LoginPageState extends State<LoginPage> {
  @override
       Widget build(BuildContext context) {
 
@@ -72,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
 
-        final loginButon = Material(
+        final loginButton = Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(30.0),
           color: Color(0xff01A0C7),
@@ -86,6 +88,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         );
 
+        final createNewAccount = FlatButton(
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {},
+            child: Text("Create A New Account",
+                textAlign: TextAlign.center,
+          ),
+        );
         
 
         return Scaffold(
@@ -106,17 +115,25 @@ class _MyHomePageState extends State<MyHomePage> {
                         fit: BoxFit.contain,
                       ),
                     ),
+                    
                     SizedBox(height: 45.0),
                     emailField,
+                    
                     SizedBox(height: 25.0),
                     passwordField,
-                    SizedBox(
-                      height: 35.0,
-                    ),
-                    loginButon,
+                    
+                    SizedBox(height: 35.0),
+                    loginButton,
+
                     SizedBox(
                       height: 15.0,
                     ),
+                    createNewAccount,
+                
+                    
+                    
+                      
+                    
                   ],
                 ),
               ),
