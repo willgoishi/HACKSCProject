@@ -3,6 +3,7 @@ import 'package:hackscproject/mentalhealthresources.dart';
 import 'usercreationform.dart';
 import 'landingpage.dart';
 import 'mentalhealthresources.dart';
+import 'postlogin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(MyApp());
@@ -103,7 +104,14 @@ class _LoginPageState extends State<LoginPage> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: validateandsave,
+            onPressed: () {
+              validateandsave();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => (HomePage())),
+              );
+              
+            }, 
             child: Text("Login",
                 textAlign: TextAlign.center,
                ),

@@ -60,13 +60,7 @@ class LandingPage extends StatelessWidget {
                     SizedBox(height: 35.0),
                     loginhome,
                     SizedBox(height: 45.0),
-                    mhresources,
-
-                    
-
-
-                    
-                    
+                    mhresources
 
                   ],
                 ),
