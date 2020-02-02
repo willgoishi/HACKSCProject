@@ -5,13 +5,15 @@ void main() => runApp(UserCreationForm());
 
 class UserModel
 {
+    final String email;
+    final String password;
     final String firstName;
     final String lastName;
     final String mentalHealthIssue;
     final String bioInformation; 
     //final DateTime birthDate;
 
-    UserModel(this.firstName, this.lastName, this.mentalHealthIssue, this.bioInformation);
+    UserModel(this.email, this.password, this.firstName, this.lastName, this.mentalHealthIssue, this.bioInformation);
     //, this.birthDate
 }
 
@@ -41,6 +43,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   final _formKey = GlobalKey<FormState>();
   final firebaseReference = Firestore.instance;
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final passwordConfirmController = TextEditingController();
   final myFirstNameController = TextEditingController();
   final myLastNameController = TextEditingController();
   final myMentalHealthController = TextEditingController();
@@ -49,6 +54,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    passwordConfirmController.dispose();
     myFirstNameController.dispose();
     myLastNameController.dispose();
     myMentalHealthController.dispose();
@@ -59,6 +67,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   void submission()
   {
       var user = new UserModel(
+        emailController.text,
+        passwordController.text,
         myFirstNameController.text,
         myLastNameController.text,
         myMentalHealthController.text,
@@ -67,6 +77,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
       firebaseReference.collection("users").add(
         {
+          "Email" : user.email,
+          "Password" : user.password,
           "First Name" : user.firstName,
           "Last Name" : user.lastName,
           "Mental Health" : user.mentalHealthIssue,
@@ -77,7 +89,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         //Do someting when error occurs
       });
 
-      
+
   }
 
   @override
@@ -105,10 +117,46 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             Padding(
               padding: EdgeInsets.all(10),
+              child: TextFormField( 
+                controller : passwordController,
+                decoration: const InputDecoration(
+                  hintText: 'Enter Email'
+                ),
+                validator: (value) {
+                  return value.isEmpty ? 'Section is required' : null; 
+                }
+              )
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: TextFormField( 
+                controller : passwordConfirmController,
+                decoration: const InputDecoration(
+                  hintText: 'Enter password'
+                ),
+                validator: (value) {
+                  return value.isEmpty ? 'Section is required' : null; 
+                }
+              )
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: TextFormField( 
+                controller : emailController,
+                decoration: const InputDecoration(
+                  hintText: 'Confirm password'
+                ),
+                validator: (value) {
+                  return value.isEmpty ? 'Section is required' : null; 
+                }
+              )
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
               child: TextFormField(
                 controller: myLastNameController,
                 decoration: const InputDecoration(
-                  hintText: 'When is your birthday',
+                  hintText: 'Enter birthday',
                 ),
                 validator: (value) {
                   if (value.isEmpty) {
