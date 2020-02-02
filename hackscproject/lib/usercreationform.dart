@@ -91,6 +91,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
 
   }
+List<String> _locations = ['Pacific Standard Time', 'Mountain Standard Time', 'Central Standard Time', 'Eastern Standard Time']; // Option 2
+  String _selectedLocation; // Option 2
 
   @override
   Widget build(BuildContext context) {
@@ -166,19 +168,28 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 },
               ),
             ),
+
             Padding(
               padding: EdgeInsets.all(10),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'What time zone do you live in',
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
+
+              
+            child: DropdownButton(
+            isExpanded: true,
+            hint: Text('Please Choose A Time Zone'), 
+            value: _selectedLocation,
+            onChanged: (newValue) {
+              setState(() {
+                _selectedLocation = newValue;
+              });
+            },
+            items: _locations.map((location) {
+              return DropdownMenuItem(
+                child: new Text(location),
+                value: location,
+              );
+            }).toList(),
+          ),
+              
             ),
             Padding(
               padding: EdgeInsets.all(10),

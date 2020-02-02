@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hackscproject/mentalhealthresources.dart';
 import 'usercreationform.dart';
 import 'landingpage.dart';
+import 'mentalhealthresources.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(MyApp());
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
       home: new LandingPage(),
       routes: <String, WidgetBuilder>{
         '/login': (BuildContext context) => new LoginPage(),
+        '/mh': (BuildContext context) => new MentalHealthResources(),
       },
     );
   }
