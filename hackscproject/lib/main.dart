@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'usercreationform.dart';
+import 'landingpage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(title: 'Landing Page'),
+      home: LandingPage(),
     );
   }
 }
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final formkey = new GlobalKey<FormState>();      
 
-  String _enail;
+  String _email;
   String _password;
   
   void validateandsave(){
