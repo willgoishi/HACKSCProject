@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'usercreationform.dart';
+import 'package:hackscproject/main.dart';
 class LandingPage extends StatelessWidget {
 
   @override
@@ -10,16 +10,11 @@ class LandingPage extends StatelessWidget {
         title: Text("Landing Page"),
       ),
       body: Center(
-        child: MaterialButton(
-          onPressed: () {
-           Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => (UserCreationForm())),
-              );
-          },
+        child: new MaterialButton(
           child: Text('Sign in'),
-        ),
-      ),
+          onPressed: () => Navigator.of(context).pushNamed('/login')
+      )
+      )
     );
   }
 }

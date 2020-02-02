@@ -23,7 +23,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: LandingPage(),
+      home: new LandingPage(),
+      routes: <String, WidgetBuilder>{
+        '/login': (BuildContext context) => new LoginPage(),
+      },
     );
   }
 }
